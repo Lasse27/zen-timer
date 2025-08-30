@@ -4,17 +4,19 @@ on:
   push:
     tags:
       - 'v*.*.*'  # trigger auf Versionstags wie v1.0.0
-
+  workflow_dispatch:  # Manuelles Triggern des Workflows
+    
+permissions:
+  contents: write  # Für Release erstellenn
+  packages: write  # Für Release Assets hochladen
+  
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    
       # 1. Repository auschecken
       - name: Checkout repository
         uses: actions/checkout@v3
-
 
       # 2. Node.js installieren
       - name: Setup Node.js
@@ -22,11 +24,9 @@ jobs:
         with:
           node-version: 20  # Passe Node-Version an, die du benutzt
 
-
       # 3. package-lock generieren
       - name: Create package-lock.json
         run: npm install
-
 
       # 3b. Wine installieren (für Windows Builds auf Linux Runner)
       - name: Install Wine
@@ -41,12 +41,12 @@ jobs:
       - name: Install Electron Builder
         run: npm install -g electron-builder
 
-
       # 5. Build
       - name: Build Windows Installer
         run: npm run electron:buildwin
+        env:
+          CI: true  # Verhindert interaktive Prompts
 
-      
       # Build Release Files
       - name: Get app name from package.json
         id: vars
@@ -54,7 +54,7 @@ jobs:
           APP_NAME=$(jq -r .name package.json)
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
           echo "VERSION=${GITHUB_REF_NAME}" >> $GITHUB_ENV
-
+        
 
       - name: Zip Electron output with name and version
         run: |
@@ -67,7 +67,7 @@ jobs:
 
       - name: Generate SHA256 checksum
         run: sha256sum $ZIP_NAME > "${ZIP_NAME}.sha256"
-
+        
       
       - name: Create GitHub Release
         id: create_release
