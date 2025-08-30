@@ -4,23 +4,16 @@
   "private": true,
   "description": "Eine minimalistische Timer-App für fokussiertes Arbeiten und Meditation.",
   "author": "Lasse <lassehillen@gmx.de>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lasse/zen-timer.git"
-  },
-  "keywords": [
-    "timer",
-    "focus",
-    "meditation",
-    "vue",
-    "productivity"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
@@ -32,8 +25,12 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-cli-plugin-electron-builder": "~2.1.1"
   },
   "eslintConfig": {
     "root": true,
@@ -54,5 +51,17 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "keywords": [
+    "timer",
+    "focus",
+    "meditation",
+    "vue",
+    "productivity"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lasse/zen-timer.git"
+  }
 }
