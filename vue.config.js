@@ -4,7 +4,8 @@ module.exports = defineConfig({
   publicPath: './',
   pluginOptions: {
         electronBuilder: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            mainProcessFile: 'electron-main.js'
         }
     }
 })

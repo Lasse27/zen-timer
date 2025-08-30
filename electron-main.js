@@ -5,18 +5,18 @@ let win
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 1280,
-    height: 720,
-    frame: false,
-    resizable: false,
+    height: 800,
+    width: 800,
+    frame: true,
     minimizable: true,
     maximizable: true,
+    resizable: false,
     webPreferences: {
-      preload: join(__dirname, 'preload.js'), // optional
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
-
+win.setMenu(null) // <- entfernt File/Edit/View...
   if (process.env.NODE_ENV === 'development') {
     win.loadURL('http://localhost:8080')
     win.webContents.openDevTools()
