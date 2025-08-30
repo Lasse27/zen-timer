@@ -1,21 +1,14 @@
 {
-  // Name des Projekts
   "name": "zen-timer",
-  // Versionsnummer des Projekts
   "version": "0.1.0",
   "private": true,
-  // Kurze Beschreibung der App
   "description": "Eine minimalistische Timer-App für fokussiertes Arbeiten und Meditation.",
-  // Autor des Projekts
   "author": "Lasse <lassehillen@gmx.de>",
-  // Lizenztyp
   "license": "MIT",
-  // Repository-Informationen (z.B. für GitHub)
   "repository": {
     "type": "git",
     "url": "https://github.com/lasse/zen-timer.git"
   },
-  // Schlagwörter für bessere Auffindbarkeit
   "keywords": [
     "timer",
     "focus",
