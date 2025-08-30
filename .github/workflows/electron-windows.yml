@@ -25,6 +25,12 @@ jobs:
 
 
 
+      # 2.1. package-lock generieren
+      - name: Create package-lock.json
+        run: npm install
+
+
+
       # 3. Abhängigkeiten installieren
       - name: Install dependencies
         run: npm ci
