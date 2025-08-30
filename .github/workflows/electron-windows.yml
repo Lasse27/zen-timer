@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@v3
 
 
-
       # 2. Node.js installieren
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -24,29 +23,28 @@ jobs:
           node-version: 20  # Passe Node-Version an, die du benutzt
 
 
-
-      # 2.1. package-lock generieren
+      # 3. package-lock generieren
       - name: Create package-lock.json
         run: npm install
 
 
-
-      # 3. Abhängigkeiten installieren
-      - name: Install dependencies
-        run: npm ci
-
-
+      # 3b. Wine installieren (für Windows Builds auf Linux Runner)
+      - name: Install Wine
+        if: runner.os == 'Linux'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install -y wine32 wine64
+          wine --version
 
       # 4. Electron Builder installieren (falls global nötig)
       - name: Install Electron Builder
         run: npm install -g electron-builder
 
 
-
       # 5. Build
       - name: Build Windows Installer
         run: npm run electron:buildwin
-
 
       
       # Build Release Files
@@ -58,7 +56,6 @@ jobs:
           echo "VERSION=${GITHUB_REF_NAME}" >> $GITHUB_ENV
 
 
-
       - name: Zip Electron output with name and version
         run: |
           ZIP_NAME="${APP_NAME}-${VERSION}.zip"
@@ -68,10 +65,8 @@ jobs:
           echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
 
 
-
       - name: Generate SHA256 checksum
         run: sha256sum $ZIP_NAME > "${ZIP_NAME}.sha256"
-
 
       
       - name: Create GitHub Release
@@ -84,7 +79,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-
       - name: Upload ZIP
         uses: actions/upload-release-asset@v1
         with:
@@ -92,7 +86,6 @@ jobs:
           asset_path: ${{ env.ZIP_NAME }}
           asset_name: ${{ env.ZIP_NAME }}
           asset_content_type: application/zip
-
 
 
       - name: Upload SHA256
