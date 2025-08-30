@@ -1,29 +1,53 @@
-# zen-timer
+# ZenTimer
 
-## Project setup
+ZenTimer ist ein einfaches, frei nutzbares Hobby-Projekt: Ein fokussierter Timer mit Zen-inspiriertem Design und motivierenden Sprüchen. Die Anwendung richtet sich an alle, die fokussiert arbeiten oder lernen möchten.
+
+## Features
+
+- **Fokus-Timer:** Stelle eine beliebige Zeit ein, starte und stoppe den Timer.
+- **Akustisches Signal:** Am Ende der Zeit ertönt ein prägnanter Piepton (mehrfach).
+- **Motivierende Zen-Sprüche:** Im Header werden wechselnde, inspirierende Sprüche angezeigt.
+- **Responsives Design:** Die Timer-Anzeige passt sich der Bildschirmgröße an.
+- **Modulare Architektur:** Die Logik ist in Composables ausgelagert:
+  - `useTimer`: Timer-Logik (Start, Stop, Fortschritt, Zeitformatierung)
+  - `useBeep`: Akustisches Signal am Ende
+  - `useResponsiveRadius`: Dynamische SVG-Größe für die Timer-Anzeige
+
+## Technologien
+
+- [Vue 3](https://vuejs.org/) mit `<script setup>`
+- Composition API & eigene Composables
+- Web Audio API für den Signalton
+- Responsives SVG für die Timer-Anzeige
+
+## Projekt Setup
 
 ```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Entwicklung starten
 
 ```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Für Produktion bauen
 
 ```bash
 npm run build
 ```
 
-### Lints and fixes files
+### Linting
 
 ```bash
 npm run lint
 ```
 
-### Customize configuration
+## Electron Build
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<!-- Hier später Anleitung für Electron-Builds ergänzen -->
+
+## Lizenz
+
+MIT
