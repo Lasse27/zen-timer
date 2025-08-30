@@ -1,12 +1,14 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import NavigationBar from './components/NavigationBar.vue'
+import TimerClock from '../TimerClock.vue';
+import RotatingZenHeader from '../RotatingZenHeader.vue';
 
 </script>
 
 <template>
   <div id="MainVBox" class="v-box">
-    <NavigationBar msg="Welcome to Your Vue.js App"/>
+    <RotatingZenHeader/>
+    <TimerClock/>
     <RouterView/>
   </div>
 </template>
@@ -20,6 +22,7 @@ import NavigationBar from './components/NavigationBar.vue'
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%;
   gap: 2rem ;
   box-sizing: border-box;
 }

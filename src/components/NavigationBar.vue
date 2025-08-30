@@ -4,9 +4,7 @@
       <img alt="ZenTimer Logo" src="../assets/logo.png" height="40"/>
       <span>ZenTimer</span>
       <div class="separator">|</div>
-      <a href="#">Focus</a>
-      <a href="#">Meditate</a>
-      <a href="#">Interval</a>
+      <router-link to="/">Focus</router-link>
     </div>
   </nav>
 </template>
