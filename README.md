@@ -1,5 +1,7 @@
 # ZenTimer
 
+[![Build & Release Electron App (Windows)](https://github.com/Lasse27/zen-timer/actions/workflows/electron-windows.yml/badge.svg?event=workflow_run)](https://github.com/Lasse27/zen-timer/actions/workflows/electron-windows.yml)
+
 ZenTimer ist ein einfaches, frei nutzbares Hobby-Projekt: Ein fokussierter Timer mit Zen-inspiriertem Design und motivierenden Sprüchen. Die Anwendung richtet sich an alle, die fokussiert arbeiten oder lernen möchten.
 
 ## Features
