@@ -6,7 +6,7 @@ module.exports = defineConfig({
     pluginOptions: {
         electronBuilder: {
             nodeIntegration: true,
-            mainProcessFile: 'electron-main.js',
+            mainProcessFile: 'src/background.js',
             builderOptions: {
                 productName: "ZenTimer",
                 appId: "de.lasse27.zen-timer",
